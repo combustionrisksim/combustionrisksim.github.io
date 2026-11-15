@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fire Experiment Analyzer</title>
-
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Combustion Risk Sim</title>
     <style>
         * {
             box-sizing: border-box;
@@ -498,204 +498,334 @@
                 white-space: normal
             }
         }
+
+        /* COLLAPSIBLE INTRODUCTION AND PROJECT DETAILS SECTIONS */
+        .question-accordion {
+            border: 1px solid #334155;
+            border-radius: 9px;
+            background: #172235;
+            margin: 14px 0;
+            overflow: hidden;
+        }
+
+        .question-accordion-title {
+            color: #7dd3fc;
+            cursor: pointer;
+            font-size: 1.17em;
+            font-weight: bold;
+            list-style: none;
+            padding: 15px 48px 15px 18px;
+            position: relative;
+        }
+
+        .question-accordion-title::-webkit-details-marker {
+            display: none;
+        }
+
+        .question-accordion-title::after {
+            content: "+";
+            color: #93c5fd;
+            font-size: 24px;
+            line-height: 1;
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .question-accordion[open]>.question-accordion-title::after {
+            content: "−";
+        }
+
+        .question-accordion[open]>.question-accordion-title {
+            border-bottom: 1px solid #334155;
+        }
+
+        .question-accordion> :not(summary) {
+            margin-left: 18px;
+            margin-right: 18px;
+        }
+
+        .question-accordion> :last-child {
+            margin-bottom: 18px;
+        }
+
+        .question-accordion-title:focus-visible {
+            outline: 2px solid #60a5fa;
+            outline-offset: -3px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-
         <div class="top-tabs">
-            <button type="button" id="mainTab" class="top-tab active" onclick="showPage('main')">Fire Safety
-                Dashboard</button>
-            <button type="button" id="dataTab" class="top-tab" onclick="showPage('data')">NASA Experiment
+            <button class="top-tab active" id="mainTab" onclick="showPage('main')" type="button">Introduction</button>
+            <button class="top-tab" id="projectDetailsTab" onclick="showPage('projectDetails')" type="button">Project
+                Details</button>
+            <button class="top-tab" id="dataTab" onclick="showPage('data')" type="button">NASA Experiment
                 Results</button>
-            <button type="button" id="crasmTab" class="top-tab" onclick="showPage('crasm')">Combustion Risk Assessment
-                Simulator in Microgravity - CRASM</button>
+            <button class="top-tab" id="crasmTab" onclick="showPage('crasm')" type="button">CRASM Sim</button>
         </div>
         <div id="mainPage">
             <div class="container">
-                <h1>Flame in Freefall</h1>
+                <h1>Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data</h1>
                 <p class="subtitle">By: Team Mevidakasha</p>
                 <div class="panel">
-                    <h2>Summary</h2>
-                    <h3>What did you develop?</h3>
-                    <ul>
+                    <details class="question-accordion">
+                        <summary class="question-accordion-title">What did we develop?</summary>
+                        <ul>
+                            <p>We built a SI-powered dashboard that takes NASA's microgravity combustion data and turns
+                                it into clear fire safety tips. We analyzed real data from NASA's PSI database and
+                                organized the most important information, like the fuel type, oxygen level, pressure,
+                                airflow, and burn time. We then used the learning from the analysis dataset and created
+                                a combustion risk scoring system for these three fuel types: Solid, Liquid, and Gas.
+                            </p>
+                        </ul>
+                    </details>
+                    <details class="question-accordion">
+                        <summary class="question-accordion-title">How does it address the challenge?</summary>
+                        <ul>
+                            <p>The challenge asked us to make a dashboard that summarizes, ranks, and interprets NASA's
+                                fire
+                                experiments to help keep people safe in space. Our dashboard does that by:
+                                <br />The dashboard summarizes each experiment's goal,
+                                variables, and results in simple and
+                                easy-to-read words.
+                            </p>
+                            <ol><br />
+                                <li>Summarizing each experiment's goal, variables, and results in a simple and
+                                    easy-to-read
+                                    format.</li>
+                                <br />
+                                <li>It ranks how risky each test is based on real data from previous NASA experiments.
+                                    We
+                                    assess
+                                    a combustion rating of Low, Medium, or High Risk, so that people can analyze what
+                                    type
+                                    of
+                                    conditions are most prone to cause fires and eventually dangerous situations.
+                                </li><br />
+                                It provides the range of environmental conditions (eg: O2 flow, temperatures, burn
+                                times) for each combustion rating so that future experiments can be designed
+                                appropriately based on the risk appetite.
 
-                        <p>We built a SI-powered dashboard that takes NASA's microgravity combustion data and turns
-                            it into clear fire safety tips. We analyzed real data from NASA's PSI database and
-                            organized the most important information, like the fuel type, oxygen level, pressure,
-                            airflow, and burn time. We then used the learning from the analysis dataset and created
-                            a combustion risk scoring system for these three fuel types: Solid, Liquid, and Gas.
-                        </p>
-                    </ul>
-                    <h3>How does it address the challenge?</h3>
-                    <ul>
-
-                        <p>The challenge asked us to make a dashboard that summarizes, ranks, and interprets NASA's
-                            fire
-                            experiments to help keep people safe in space. Our dashboard does that by:
-                            <br>The dashboard summarizes each experiment's goal,
-                            variables, and results in simple and
-                            easy-to-read words.
-                        </p>
-
-                        <ol><br>
-                            <li>Summarizing each experiment's goal, variables, and results in a simple and easy-to-read
-                                format.</li>
-                            <br>
-                            <li>It ranks how risky each test is based on real data from previous NASA experiments. We
-                                assess
-                                a combustion rating of Low, Medium, or High Risk, so that people can analyze what type
-                                of
-                                conditions are most prone to cause fires and eventually dangerous situations.
-                            </li><br>
-                            It provides the range of environmental conditions (eg: O2 flow, temperatures, burn
-                            times) for each combustion rating so that future experiments can be designed
-                            appropriately based on the risk appetite.
-                            </li>
-                        </ol>
-                    </ul>
-                    <h3>Why is it important?</h3>
-                    <ul>
-                        <p>Fire is one of the biggest dangers in space, because astronauts can't escape it and there is
-                            nobody to save them. In space, fires behave very differently compared to fires on Earth due
-                            to gravity. Airflow from fans can make fires spread rapidly, and some fires in space keep on
-                            burning even though the flame is not visible. This is why our dashboard turns NASA's complex
-                            fire data into clear and easy-to-understand risk categories, helping people in space safely
-                            identify flames in space before they can spread, keeping them safe.
-                        </p>
-                    </ul>
+                            </ol>
+                        </ul>
+                    </details>
+                    <details class="question-accordion">
+                        <summary class="question-accordion-title">Why is it important?</summary>
+                        <ul>
+                            <p>Fire is one of the biggest dangers in space, because astronauts can't escape it and there
+                                is
+                                nobody to save them. In space, fires behave very differently compared to fires on Earth
+                                due
+                                to gravity. Airflow from fans can make fires spread rapidly, and some fires in space
+                                keep on
+                                burning even though the flame is not visible. This is why our dashboard turns NASA's
+                                complex
+                                fire data into clear and easy-to-understand risk categories, helping people in space
+                                safely
+                                identify flames in space before they can spread, keeping them safe.
+                            </p>
+                        </ul>
                 </div>
-                <div class="panel">
-                    <h2>Project Details</h2>
-                    <h3>Different types of fuels</h3>
-                    <ul>
-                        <li>Solid Fuels (Experiments: BASS-II, PSI-25): scored by how much oxygen was used and how much
-                            carbon dioxide (CO₂) and carbon monoxide (CO) were produced. Solid fuel types covered are
-                            PMMA, NOMEX, spherical solids, SIBAL, rod, and wax candle.</li><br>
-                        <li>Liquid Fuels (Experiments: FLEX, PSI-69): scored by how much oxygen was used and how much
-                            carbon dioxide (CO₂) and carbon monoxide (CO) were produced. Liquid fuel types covered:
-                            heptane and methanol.</li><br>
-                        <li>Gaseous Fuels (CFI-G, PSI-159): scored by burn time and peak burner temperature
-                            - Gaseous fuel types covered are Ethane, Butane, & Propane
-                        </li>
-
-
-                        We used JavaScript for analysis, and the output is HTML hosted on GitHub
-
-                    </ul>
-                    <h3>What did your project do, and how does it work?</h3>
-                    <ul>
-                        <p>Our project is an HTML dashboard designed to summarize, compare, and organize data uploaded
-                            as CSV files. It's hosted via a GitHub subdomain and originally coded in a repository.
-                        </p>
-                    </ul>
-                    <h3>What benefits does it have?</h3>
-                    <ul>
-                        <p>Originally, NASA's data is incredibly difficult to go through manually due to the tremendous
-                            amount of data; however, our website sorts through it instantly and compiles it in a
-                            readable and understandable manner. We have many sliders and tabs that make it easier to
-                            find a variety of information quickly.
-
-                        </p>
-                    </ul>
-                    <h3>What is the intended impact?</h3>
-                    <ul>
-                        <p>The intended impact of our project is to create a tool that can help researchers, students
-                            and enjoyers of microgravity and space to be able to access information on their topic. We
-                            want all people to have equal access to information that they can use for projects,
-                            studying, or just having fun.
-
-                        </p>
-                    </ul>
-                    <h3>What tools did you use?</h3>
-                    <ul>
-                        <p>We used countless different tools to benefit this endeavor of ours in the field of NASA
-                            research on fire in microgravity, including Visual Studio Code, GitHub repositories and
-                            Subdomains, Git Bash, as well as chatbots and other superintelligence models. As well as SI,
-                            we also used a lot of public domains, such as old NASA experiments, to create our Dashboard.
-
-                        </p>
-                    </ul>
-                    <h3>How is your project creative?</h3>
-                    <ul>
-                        <p>We made all our charts on our own using the data we researched
-                            <li>-We created 3 different equations to calculate risk factors instead of just one.</li>
-                            <br>
-                            <li>-We coded sliders and tabs to make navigating our dashboard easier even with a lot of
-                                information</li><br>
-                            <li>-We got insights from NASA and NIST</li><br>
-                            Our project is creative through the fact that we created almost all our charts on our own
-                            using PowerPoint. One major way we were very creative was when we calculated the risk rate
-                            and created 3 different risk algorithms instead of just one. Another way our project is
-                            creative is because we coded a lot of sliders and tabs to make navigating our Dashboard
-                            easier, even with the large amount of information that we have stored.
-
-                        </p>
-                    </ul>
-                    <h3>What factors did your team consider?</h3>
-                    <p>
-                        Factor:
-                        <li>-Availability of data</li><br>
-                        <li>-Applications for future</li><br>
-                        <li>-User-friendliness</li><br><br>
-
-
-                        A. Filtering Data
-                    <ol>
-                        <li>We started with 26 experiments</li><br>
-                        <li>We then filtered out experiments that have data sets and don't</li><br>
-                        <li>We ended up with only 16 experiments</li><br>
-                        <li>We then split them up into two categories: Investigations and Experiments</li><br>
-                        <li>10 of them did not have a data set, but we learned about all the important variables needed
-                            to put out or even make a fire larger</li><br>
-                        <li>6 of them had 4 useful data elements</li><br>
-                        <li>That led us to having 3 main experiments with 4 datasets.</li>
-                    </ol><br><br>
-                    B. The above data was analyzed using separate formulas from NIST to calculate combustion risk for
-                    different fuel types, as per the images below. This NASA data was the training data to identify
-                    combinations of variable ranges for risk assessment.<br><br>
-
-
-
-
-
-
-
-
-
-                    C. Using the model developed, we created a user-friendly tool to assess combustion risk, where given
-                    a fuel type and material, sliders can help identify ranges of other parameters which will decide the
-                    risk level. For example;
-                    <li>For gas fuel: a burn time over 51 seconds with a peak burner temperature over 166 °C is high
-                        risk. If the peak burner temperature stays below 166 °C, the risk drops to moderate. If the burn
-                        time is also under 28 seconds, the risk drops to low.</li><br>
-
-                    <li>For solid fuel: if the oxygen goes down while CO₂ and carbon monoxide both go up, it is high
-                        risk. If carbon monoxide stays about the same (a rise of 24 ppm or less), the risk drops to
-                        moderate. If all three gases barely change, the risk is low.</li><br>
-
-                    <li>For liquid fuel: a burn time over 16 seconds with the fuel droplet shrinking more than 29%
-                        before the flame goes out is high risk. If the droplet shrinks less than 29%, the risk drops to
-                        moderate. If the burn time is also under 10 seconds, the risk drops to low.</li>
-                    </p>
-                    </ul>
-                    <h3>Application for the future</h3>
-                    <ul>
-                        <li>All learnings from experiments can teach us how we can prepare spacecraft for fire danger
-                        </li>
-                        <li>Combustion risk assessment tool that will be used by scientists to leverage ratings to
-                            assess risk</li>
-                        <li>A user-friendly dashboard is designed to be interactive so that users can recreate,
-                            navigate, and consume info from the site quickly and efficiently</li>
-                        <li>Experiment design can be customized based on input variables</li>
-                        <li>Preemptively prepare for approaching danger</li>
-
-                    </ul>
-                </div>
+                </details>
             </div>
         </div>
-        <div id="dataPage" class="hidden">
+        <div class="hidden" id="projectDetailsPage">
+            <h1>Project Details</h1>
+            <div class="panel">
+                <details class="question-accordion">
+                    <summary class="question-accordion-title">1. Different Types of Fuel and Risk Assessment</summary>
+                    <p>Our project examines three types of fuel: solid, liquid, and gaseous. Since each behaves
+                        differently
+                        during combustion, we developed separate, data-informed scoring approaches to classify
+                        combustion
+                        risk as Low, Medium, or High.</p>
+                    <p>We analyzed publicly available NASA experimental data to identify important combustion indicators
+                        for
+                        each fuel category.</p>
+                    <h3 style="color: aliceblue;">A. Solid Fuels</h3>
+                    <ul>
+                        <li><strong>NASA experiments:</strong> BASS-II (PSI-25) and related solid-combustion datasets.
+                        </li>
+                        <li><strong>Materials:</strong> PMMA, NOMEX, spherical solids, SIBAL, rod-shaped samples, and
+                            wax
+                            candles.</li>
+                        <li><strong>Variables:</strong> Changes in oxygen (O₂), carbon dioxide (CO₂), and carbon
+                            monoxide
+                            (CO) concentrations between the beginning and end of an experiment.</li>
+                        <li><strong>Assessment:</strong> Oxygen consumption and changes in CO₂ and CO are used to
+                            identify
+                            combustion-related patterns and classify risk.</li>
+                    </ul>
+                    <h3 style="color: aliceblue;">B. Liquid Fuels</h3>
+                    <ul>
+                        <li><strong>NASA experiments:</strong> FLEX and PSI-69.</li>
+                        <li><strong>Materials:</strong> Heptane and methanol.</li>
+                        <li><strong>Variables:</strong> Fuel burning rate, droplet diameter reduction, and burn time.
+                        </li>
+                        <li><strong>Assessment:</strong> Burning rate, fuel consumption, and combustion persistence are
+                            evaluated to determine risk.</li>
+                    </ul>
+                    <h3 style="color: aliceblue;">C. Gaseous Fuels</h3>
+                    <ul>
+                        <li><strong>NASA experiments:</strong> CFI-G and PSI-159.</li>
+                        <li><strong>Materials:</strong> Ethane, butane, and propane.</li>
+                        <li><strong>Variables:</strong> Burning rate and peak burner temperature.</li>
+                        <li><strong>Assessment:</strong> Both indicators are scored using ranges derived from the
+                            analyzed
+                            experimental data to classify combustion risk.</li>
+                    </ul>
+                </details>
+                <details class="question-accordion">
+                    <summary class="question-accordion-title">2. What Does Our Project Do, and How Does It Work?
+                    </summary>
+                    <p>Our project is an interactive web-based dashboard that organizes NASA microgravity combustion
+                        data
+                        and helps users explore combustion behavior across different fuel types.</p>
+                    <p>NASA experiment data is often distributed across multiple experiments, reports, and datasets,
+                        making
+                        it difficult to compare results manually.</p>
+                    <p>We developed a tool that:</p>
+                    <ul>
+                        <li>Organizes relevant NASA experimental data.</li>
+                        <li>Applies separate, rule-based scoring methods for solid, liquid, and gaseous fuels.</li>
+                        <li>Classifies combustion risk as Low, Medium, or High.</li>
+                        <li>Allows users to select fuel types and materials and adjust combustion parameters using
+                            interactive sliders.</li>
+                        <li>Displays how changing individual parameters or combinations of parameters affects the risk
+                            classification.</li>
+                    </ul>
+                    <p>The dashboard is built using HTML and JavaScript and hosted on GitHub.</p>
+                </details>
+                <details class="question-accordion">
+                    <summary class="question-accordion-title">3. What Benefits Does It Have?</summary>
+                    <p>Our project makes complex NASA combustion research easier to explore and understand.</p>
+                    <p>Instead of manually reviewing large datasets, users can:</p>
+                    <ul>
+                        <li>Quickly explore combustion measurements from multiple NASA experiments.</li>
+                        <li>Compare combustion behavior across different fuel materials.</li>
+                        <li>Understand which parameters influence combustion risk.</li>
+                        <li>Explore with different parameter combinations through interactive sliders.</li>
+                    </ul>
+                    <p>It provides an accessible educational and exploratory tool for students, researchers, and anyone
+                        interested in space and microgravity combustion.</p>
+                </details>
+                <details class="question-accordion">
+                    <summary class="question-accordion-title">4. What Is the Intended Impact?</summary>
+                    <p>Our goal is to make NASA microgravity combustion research more accessible while contributing to a
+                        better understanding of fire behavior in space.</p>
+                    <p>Potential applications include:</p>
+                    <ul>
+                        <li><strong>Spacecraft fire safety:</strong> Helping researchers explore how different fuels and
+                            materials behave during combustion in microgravity.</li>
+                        <li><strong>Research and education:</strong> Making NASA experimental data easier to understand
+                            and
+                            analyze.</li>
+                        <li><strong>Risk assessment:</strong> Providing an initial data-informed framework to explore
+                            combustion risk under different conditions. That way proper safety measures can be put in
+                            place
+                            preemptively.</li>
+                        <li><strong>Future experiment planning:</strong> Identifying important combustion parameters and
+                            combinations of conditions for further investigation.</li>
+                    </ul>
+                </details>
+                <details class="question-accordion">
+                    <summary class="question-accordion-title">5. What Tools Did We Use?</summary>
+                    <ul>
+                        <li><strong>HTML and JavaScript:</strong> Building the dashboard, analyzing experimental
+                            measurements, implementing scoring rules, and displaying results.</li>
+                        <li><strong>GitHub:</strong> Managing the source code and hosting the website.</li>
+                        <li><strong>NASA public datasets:</strong> Providing experimental measurements and scientific
+                            background.</li>
+                        <li><strong>NIST scientific research:</strong> Understand important variables/factors for
+                            various
+                            fuel types to formulate Combustion risk.</li>
+                        <li><strong>AI-assisted tools:</strong> ChatGPT, Claude, Gemini to help us understand scientific
+                            concepts, explore datasets, develop/debug code and generate images.</li>
+                    </ul>
+                </details>
+                <details class="question-accordion">
+                    <summary class="question-accordion-title">6. How Is Our Project Creative and Innovative?</summary>
+                    <p>Our project combines NASA experimental research, data analysis, scientific reasoning, and
+                        interactive
+                        software development into one accessible tool.</p>
+                    <h3 style="color: aliceblue;">A. Finding and Filtering NASA Data</h3>
+                    <p>We started by identifying 26 NASA combustion-related investigations and experiments. We reviewed
+                        their available information and filtered them based on data availability and relevance to
+                        combustion
+                        risk.</p>
+                    <p>This process resulted in 16 relevant investigations and experiments for further examination. Some
+                        provided usable numerical datasets, while others helped us understand important variables
+                        affecting
+                        fire behavior.</p>
+                    <p>We then selected the most useful experimental datasets and organized them by fuel category.</p>
+                    <h3 style="color: aliceblue;">B. Analyzing Data and Developing Risk Assessment Rules</h3>
+                    <p>We analyzed the selected NASA datasets to identify important combustion indicators and develop
+                        separate scoring approaches for each fuel category:</p>
+                    <ul>
+                        <li><strong>Solid fuels:</strong> Changes in O₂, CO₂, and CO concentrations [Figure 1 and Figure
+                            2].
+                        </li>
+                        <li><strong>Liquid fuels:</strong> Burning rate, droplet diameter reduction, and burn time
+                            [Figure
+                            3].</li>
+                        <li><strong>Gaseous fuels:</strong> Burning rate and peak burner temperature [Figure 4].</li>
+                    </ul>
+                    <p>Using patterns and ranges observed in the experimental data, we developed our own rule-based
+                        scoring
+                        methods to classify combustion risk as Low, Medium, or High.</p>
+                    <p>These are team-developed assessment rules informed by NASA experimental data, not official NASA
+                        risk
+                        ratings or universally validated fire-safety thresholds.</p>
+                    <img src="0001.svg" alt="Figure 1" style="max-width: 100%; height: auto; margin-top: 12px;" />
+                    <img src="0002.svg" alt="Figure 2" style="max-width: 100%; height: auto; margin-top: 12px;" />
+                    <img src="0003.svg" alt="Figure 3" style="max-width: 100%; height: auto; margin-top: 12px;" />
+                    <img src="0004.svg" alt="Figure 4" style="max-width: 100%; height: auto; margin-top: 12px;" />
+                    <h3 style="color: aliceblue;">C. Building an Interactive Risk Assessment Tool</h3>
+                    <p>We implemented our scoring methods in an interactive dashboard. Users can select a fuel category
+                        and
+                        material, adjust combustion parameters using sliders, and immediately see how different
+                        conditions
+                        affect the risk classification.</p>
+                    <p>This allows users to explore multiple combustion scenarios without manually analyzing the
+                        original
+                        datasets each time.</p>
+                </details>
+                <details class="question-accordion">
+                    <summary class="question-accordion-title">7. What Factors Did We Consider?</summary>
+                    <p>We considered three main factors:</p>
+                    <ol>
+                        <li><strong>Availability of Data:</strong> Whether NASA experiments provided accessible,
+                            relevant
+                            measurements that could support meaningful analysis.</li>
+                        <li><strong>Future Applications:</strong> Whether our findings could help researchers understand
+                            combustion behavior and explore spacecraft fire safety.</li>
+                        <li><strong>User-Friendliness:</strong> Whether complex scientific information could be
+                            presented in
+                            a simple, interactive dashboard accessible to students and researchers.</li>
+                    </ol>
+                </details>
+                <details class="question-accordion">
+                    <summary class="question-accordion-title">8. Future Applications</summary>
+                    <p>Our project has the potential to:</p>
+                    <ul>
+                        <li>Help researchers explore combustion behavior of different fuels in microgravity.</li>
+                        <li>Identify combinations of parameters associated with higher combustion risk.</li>
+                        <li>Support the planning and design of future combustion experiments.</li>
+                        <li>Provide an interactive educational resource for students learning about space research and
+                            fire
+                            safety.</li>
+                        <li>Expand to include additional NASA experiments, materials, and combustion indicators.</li>
+                    </ul>
+                    <p>Our ultimate goal is to make complex space combustion research easier to understand and provide a
+                        foundation for further exploration of spacecraft fire safety.</p>
+                </details>
+            </div>
+        </div>
+        <div class="hidden" id="dataPage">
             <h1>Fire Experiment Analyzer</h1>
             <p class="subtitle">Four permanently included experimental datasets.
                 Select a dataset to view its
@@ -703,41 +833,33 @@
                 analysis.</p>
             <div class="panel">
                 <h2>Datasets</h2>
-                <div id="datasetTabs" class="fuel-tabs"></div>
-                <p id="datasetSummary" class="muted"></p>
+                <div class="fuel-tabs" id="datasetTabs"></div>
+                <p class="muted" id="datasetSummary"></p>
             </div>
-            <div id="results" class="hidden">
-
-
+            <div class="hidden" id="results">
                 <div class="panel">
                     <h2>Overall dataset classification</h2>
-
                     <div class="overall-layout">
                         <div>
-                            <div id="overallResult" class="overall"></div>
-                            <p id="overallExplanation" class="explanation"></p>
-
+                            <div class="overall" id="overallResult"></div>
+                            <p class="explanation" id="overallExplanation"></p>
                             <div class="fuel-state-label">Fuel physical state</div>
-                            <div id="fuelState" class="fuel-state">UNKNOWN</div>
+                            <div class="fuel-state" id="fuelState">UNKNOWN</div>
                         </div>
-
                         <div class="count-groups">
                             <div class="count-group">
-                                <h3>Combustion risk counts</h3>
-                                <div id="combustionCounts" class="count-list"></div>
+                                <h3 style="color: #7dd3fc;">Combustion risk counts</h3>
+                                <div class="count-list" id="combustionCounts"></div>
                             </div>
-
                             <div class="count-group">
-                                <h3>Flammability risk counts</h3>
-                                <div id="flammabilityCounts" class="count-list"></div>
+                                <h3 style="color: #7dd3fc;">Flammability risk counts</h3>
+                                <div class="count-list" id="flammabilityCounts"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="panel">
                     <h2>Gas &amp; Liquid Tertile Ranges</h2>
-
                     <p class="explanation">
                         Tertile ranges are calculated separately for each gas or
                         liquid fuel. Gas fuels use Burn Time and Peak Temperature.
@@ -745,24 +867,19 @@
                         Identical values are always
                         kept together in the same tertile.
                     </p>
-
                     <p class="explanation">
                         Liquid Diameter Reduction is calculated as a percentage, then
                         independently divided into low,
                         middle, and
                         high tertiles for each liquid fuel.
                     </p>
-
                     <div id="tertileRanges"></div>
                 </div>
-
                 <div class="panel">
                     <h2>Experiment-By-Experiment Results</h2>
                     <p>USE SCROLL BAR AT BOTTOM OR USE SCREEN TO HORIZONTALLY SCROLL
                         ON TABLES.</p>
-
-                    <div id="fuelTabs" class="fuel-tabs"></div>
-
+                    <div class="fuel-tabs" id="fuelTabs"></div>
                     <div class="table-wrap">
                         <table id="experimentTable">
                             <thead>
@@ -784,7 +901,6 @@
                         </table>
                     </div>
                 </div>
-
                 <div class="panel">
                     <h2>Detailed variable results</h2>
                     <p>USE SCROLL BAR AT BOTTOM OR USE SCREEN TO HORIZONTALLY SCROLL
@@ -805,20 +921,18 @@
                         </table>
                     </div>
                 </div>
-
                 <div class="panel">
                     <h2>Methodology and sources</h2>
-
                     <p class="explanation">
                         Gas-fuel combustion classification (for example, ethane)
                         uses Burn Time and Peak Temperature. Values are ranked separately within
                         each gas fuel and divided into three groups (tertiles).
-                        Each measurement receives a project-defined score of 1, 2, or 3 (1 = lowest tertile; 3 = highest
+                        Each measurement receives a project-defined score of 1, 2, or 3 (1 = lowest tertile; 3 =
+                        highest
                         tertile).
                         The two scores are averaged to determine combustion
                         classification.
                     </p>
-
                     <p class="explanation">
                         Liquid-fuel combustion classification (for example, methanol)
                         uses Burn Time and Diameter Reduction. Burn Time is divided into
@@ -831,21 +945,18 @@
                         liquid score is
                         the average of the Burn Time Score and Diameter Reduction Score.
                     </p>
-
                     <p class="explanation">
                         Identical values are never separated across tertiles.
                         If a tied group reaches or crosses a tertile boundary,
                         the entire group is assigned to the higher tertile.
                         This prevents overlapping minimum and maximum ranges.
                     </p>
-
                     <p class="explanation">
                         Solid-fuel combustion classification continues to use
                         directional changes in the available experimental
                         measurements. Gas and liquid tertile scoring does not
                         change the solid-fuel classification logic.
                     </p>
-
                     <p class="explanation">
                         Flammability Status is a separate, project-defined indicator
                         based on final oxygen and airflow. Combustion Risk is the
@@ -855,50 +966,50 @@
                         combustion outcomes. Neither rule is a universal fire-safety
                         threshold.
                     </p>
-
                     <p class="explanation">
                         The scoring thresholds and tertile cutoffs shown here are
                         project-defined from the selected experiment datasets. NASA,
                         NIST, and IEC references provide scientific background; they
                         are not the source of the project's numerical scoring cutoffs.
                     </p>
-
                     <p class="explanation">
                         References:
-                        <br>
-                        <a href="https://ntrs.nasa.gov/citations/20210011521" target="_blank" rel="noopener">NASA
+                        <br />
+                        <a href="https://ntrs.nasa.gov/citations/20210011521" rel="noopener" target="_blank">NASA
                             Saffire
                             research</a>
-                        <br>
-                        <a href="https://www.nist.gov/" target="_blank" rel="noopener">National Institute of Standards
+                        <br />
+                        <a href="https://www.nist.gov/" rel="noopener" target="_blank">National Institute of
+                            Standards
                             and
                             Technology</a>
-                        <br>
-                        <a href="https://webstore.iec.ch/en/publication/26202" target="_blank" rel="noopener">IEC
+                        <br />
+                        <a href="https://webstore.iec.ch/en/publication/26202" rel="noopener" target="_blank">IEC
                             60695-8-1</a>
                     </p>
                 </div>
-
             </div>
         </div>
     </div>
-
-    <div id="crasmPage" class="hidden">
+    <div class="hidden" id="crasmPage">
         <h1>COMBUSTION RISK ASSESSMENT SIMULATOR IN MICROGRAVITY - CRASM</h1>
         <p class="subtitle">Adjust hypothetical experiment variables. Original datasets and scoring rules remain
             unchanged.</p>
         <div class="panel" id="simulatorPanel">
             <h2>Hypothetical Experiment Simulator</h2>
-            <p class="explanation">Adjust the experiment inputs below to simulate a new experiment. The original dataset
-                stays unchanged, and the existing project rules and tertile method are applied to calculate the result.
+            <p class="explanation">Adjust the experiment inputs below to simulate a new experiment. The original
+                dataset
+                stays unchanged, and the existing project rules and tertile method are applied to calculate the
+                result.
             </p>
             <div class="sim-select-row"><label>Reference dataset <select
                         id="simDatasetSelect"></select></label><label>Fuel / material <select
                         id="simFuelSelect"></select></label></div>
-            <div id="simInputControls" class="sim-input-grid"></div>
-            <div id="simResult" class="sim-result" aria-live="polite">Choose a dataset and adjust the inputs to see a
+            <div class="sim-input-grid" id="simInputControls"></div>
+            <div aria-live="polite" class="sim-result" id="simResult">Choose a dataset and adjust the inputs to see
+                a
                 simulated result.</div>
-            <button type="button" id="resetSimulation" class="reset-button">Reset simulated inputs</button>
+            <button class="reset-button" id="resetSimulation" type="button">Reset simulated inputs</button>
         </div>
     </div>
     <script>
@@ -923,7 +1034,7 @@
         });
 
         function showPage(page) {
-            const pages = { main: ["mainPage", "mainTab"], data: ["dataPage", "dataTab"], crasm: ["crasmPage", "crasmTab"] };
+            const pages = { main: ["mainPage", "mainTab"], projectDetails: ["projectDetailsPage", "projectDetailsTab"], data: ["dataPage", "dataTab"], crasm: ["crasmPage", "crasmTab"] };
             Object.values(pages).forEach(([p, t]) => { document.getElementById(p).classList.add("hidden"); document.getElementById(t).classList.remove("active"); });
             const chosen = pages[page] || pages.main; document.getElementById(chosen[0]).classList.remove("hidden"); document.getElementById(chosen[1]).classList.add("active");
         }
