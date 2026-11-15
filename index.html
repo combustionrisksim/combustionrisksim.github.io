@@ -780,7 +780,25 @@
                     <p>These are team-developed assessment rules informed by NASA experimental data, not official NASA
                         risk
                         ratings or universally validated fire-safety thresholds.</p>
-                    <img src="0001.svg" alt="Figure 1" style="max-width: 100%; height: auto; margin-top: 12px;" />
+                    <!-- Hyperlink that triggers the popup -->
+                    <a href="#" onclick="openPopup(event)">Figure 1</a>
+                    <!-- Hidden popup container -->
+                    <div id="myPopup" class="popup-overlay">
+                        <div class="popup-box">
+                            <img src="0001.svg" alt="img1">
+                            <button onclick="closePopup()">Close</button>
+                        </div> 
+                    </div>
+                    <script>
+    function openPopup(event) {
+      event.preventDefault(); // Prevents the link from jumping to the top of the page
+      document.getElementById("myPopup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("myPopup").style.display = "none";
+    }
+  </script>
                     <img src="0002.svg" alt="Figure 2" style="max-width: 100%; height: auto; margin-top: 12px;" />
                     <img src="0003.svg" alt="Figure 3" style="max-width: 100%; height: auto; margin-top: 12px;" />
                     <img src="0004.svg" alt="Figure 4" style="max-width: 100%; height: auto; margin-top: 12px;" />
