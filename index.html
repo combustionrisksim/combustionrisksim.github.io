@@ -380,6 +380,16 @@
             background: #64748b;
         }
 
+        @media (max-width: 900px) {
+            .sim-layout {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            #crasmPage .sim-result {
+                position: static;
+            }
+        }
+
         @media (max-width: 760px) {
             .risk-controls-grid {
                 grid-template-columns: 1fr;
@@ -409,6 +419,33 @@
                 padding: 9px 13px;
                 font-size: 13px;
             }
+        }
+
+        .sim-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(320px, .85fr);
+            gap: 22px;
+            align-items: start;
+        }
+
+        .sim-controls-column {
+            min-width: 0;
+        }
+
+        .sim-meter-column {
+            min-width: 0;
+        }
+
+        #crasmPage .sim-result {
+            position: sticky;
+            top: 18px;
+            margin-top: 14px;
+        }
+
+        #crasmPage .crasm-gauge-image {
+            width: 100%;
+            max-width: 100%;
+            margin: 18px auto;
         }
 
         .sim-select-row {
@@ -1002,14 +1039,20 @@
                 stays unchanged, and the existing project rules and tertile method are applied to calculate the
                 result.
             </p>
-            <div class="sim-select-row"><label>Reference dataset <select
-                        id="simDatasetSelect"></select></label><label>Fuel / material <select
-                        id="simFuelSelect"></select></label></div>
-            <div class="sim-input-grid" id="simInputControls"></div>
-            <div aria-live="polite" class="sim-result" id="simResult">Choose a dataset and adjust the inputs to see
-                a
-                simulated result.</div>
-            <button class="reset-button" id="resetSimulation" type="button">Reset simulated inputs</button>
+            <div class="sim-layout">
+                <div class="sim-controls-column">
+                    <div class="sim-select-row"><label>Reference dataset <select
+                                id="simDatasetSelect"></select></label><label>Fuel / material <select
+                                id="simFuelSelect"></select></label></div>
+                    <div class="sim-input-grid" id="simInputControls"></div>
+                    <button class="reset-button" id="resetSimulation" type="button">Reset simulated inputs</button>
+                </div>
+                <div class="sim-meter-column">
+                    <div aria-live="polite" class="sim-result" id="simResult">Choose a dataset and adjust the inputs to see
+                        a
+                        simulated result.</div>
+                </div>
+            </div>
         </div>
     </div>
     <script>
